@@ -2,7 +2,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_QUESTİONS = gql`
-query MyQuery {
+subscription MyQuery {
     questions {
       id
       text
