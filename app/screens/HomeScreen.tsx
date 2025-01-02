@@ -1,79 +1,46 @@
+import Questions from "./Questions/";
+import AddButton from "../components/AddButton";
+import AddNewModal from "../screens/Questions/AddNewModal";
+import React, { useEffect, useState } from "react";
+import { Modal, StyleSheet, Text, View } from "react-native";
 
-import React from 'react'
-import { View, Text, ActivityIndicator, FlatList, StyleSheet,TouchableOpacity } from "react-native";
-import { useQuestion } from "../hooks/useQuestion";
+export default function HomeScreen({ navigation }) {
+  const [modalVisible, setModalVisible] = useState(false);
 
-export default function HomeScreen() {
-    const { questions, loading, error } = useQuestion();
-
-    if (loading) return <ActivityIndicator size="large" color="#0000ff" />;
-    if (error) return <Text style={styles.errorText}>Hata: {error.message}</Text>;
-    return (
-        <View style={styles.container}>
-        <FlatList
-          data={questions}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.card}>
-              <Text style={styles.question}>{item.text}</Text>
-              {item.options.map((option, index) => (
-                <TouchableOpacity key={index} >
-                  <Text style={styles.option}>{option.text}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          )}
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <AddButton
+          icon_name={"md-add-outline"}
+          onPress={() => setModalVisible((prev) => !prev)}
         />
-      </View>
-      );
+      ),
+      headerLeft: () => (
+        <AddButton
+          icon_name={"person"}
+          onPress={() => navigation.navigate("Profile")}
+        />
+      ),
+    });
+  }, [navigation]);
+  return (
+    <View>
+      <Questions />
+      <Modal
+        animationType="slide"
+        presentationStyle={"pageSheet"}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(false);
+        }}
+      >
+        <AddNewModal
+          closeModal={() => {
+            setModalVisible(false);
+          }}
+        />
+      </Modal>
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 16,
-      backgroundColor: '#f7f7f7',
-    },
-    card: {
-      backgroundColor: '#fff',
-      padding: 16,
-      marginBottom: 16,
-      borderRadius: 8,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.1,
-      shadowRadius: 4,
-      elevation: 2,
-    },
-    question: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      marginBottom: 8,
-    },
-    option: {
-      backgroundColor: '#f1f1f1',
-      padding: 12,
-      marginBottom: 8,
-      borderRadius: 8,
-    },
-    optionText: {
-      fontSize: 16,
-      color: '#333',
-    },
-
-      name: {
-        fontSize: 16,
-        fontWeight: "bold",
-      },
-      email: {
-        fontSize: 14,
-        color: "#555",
-      },
-      errorText: {
-        color: "red",
-        textAlign: "center",
-        marginTop: 20,}
-  });
-
-
- 
+const styles = StyleSheet.create({});

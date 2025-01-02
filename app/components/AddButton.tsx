@@ -2,11 +2,11 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-const AddButton = () => {
+const AddButton = ({ onPress, icon_name }) => {
   return (
-    <TouchableOpacity>
-   <Ionicons name="add" size={30} marginRight={10} color={'green'}></Ionicons>
-    </TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
+    <Ionicons name={icon_name} size={32} color="green" />
+</TouchableOpacity>
   )
 }
 
