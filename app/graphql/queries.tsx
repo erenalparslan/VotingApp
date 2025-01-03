@@ -23,3 +23,16 @@ mutation AddNewQuestionMutation($title: String!, $options: [options_insert_input
   }
 }
 `
+
+export const GET_QUESTION_DETAIL = gql`
+query DetailQuery($id: Int!) {
+  questions_by_pk(id: $id) {
+    id
+    text
+    options {
+      id
+      text
+    }
+  }
+}
+`

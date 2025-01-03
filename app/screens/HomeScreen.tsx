@@ -11,8 +11,9 @@ export default function HomeScreen({ navigation }) {
     navigation.setOptions({
       headerRight: () => (
         <AddButton
-          icon_name={"md-add-outline"}
+          icon_name={"add"}
           onPress={() => setModalVisible((prev) => !prev)}
+        
         />
       ),
       headerLeft: () => (

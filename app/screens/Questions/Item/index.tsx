@@ -3,7 +3,16 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import DeleteButton from './DeleteButton';
 import { Box } from 'native-base';
+import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 
+
+type RootStackParamList = {
+    Home: undefined;
+    Details: { id: number }; // "Details" ekranı bir "id" parametresi alır
+  };
+  
+  // Props türünü tanımlayın
+  type DetailsScreenProps = NativeStackScreenProps<RootStackParamList, "Details">;
 
 const Item = ({ item }) => {
     const navigation = useNavigation();
@@ -13,7 +22,7 @@ const Item = ({ item }) => {
             
             <TouchableOpacity
                 style={styles.titleBtn}
-                onPress={() => navigation.navigate("Detail", { id: item.id })}
+                onPress={() => navigation.navigate("Details", { id: item.id })}
             >
                 <Text style={styles.text}>{item.text}</Text>
             </TouchableOpacity>
