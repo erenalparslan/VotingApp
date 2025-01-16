@@ -36,3 +36,10 @@ query DetailQuery($id: Int!) {
   }
 }
 `
+export const NEW_ANSWER_MUTATION = gql`
+mutation MyMutation($option_id :Int!) {
+  insert_answers_one(object: {option_id : $option_id}) {
+    id
+  }
+}
+`;

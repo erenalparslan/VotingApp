@@ -14,7 +14,7 @@ function Router() {
         component={Home}
         options={{ title: "Questions" }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Details"
         component={DetailsScreen}
         options={{ title: "Details" }}
