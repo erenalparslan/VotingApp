@@ -43,3 +43,18 @@ mutation MyMutation($option_id :Int!) {
   }
 }
 `;
+
+
+export const RESULTS_SUBSCRIPTION = gql`subscription MySubscription($id :Int!) {
+  questions_by_pk(id: $id) {
+    options {
+      id
+      text
+      answers_aggregate {
+        aggregate {
+          count
+        }
+      }
+    }
+  }
+}`

@@ -6,7 +6,7 @@ import { NEW_ANSWER_MUTATION } from "@/app/graphql/queries";
 import React, { useState } from "react";
 
 
-const Form = ({ options }) => {
+const Form = ({ options ,setIsVoted}) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [newAnswer, { loading, data }] = useMutation(NEW_ANSWER_MUTATION);
   const handleSubmit = async () => {
@@ -18,6 +18,7 @@ const Form = ({ options }) => {
         option_id: selectedOption,
       },
     });
+    setIsVoted(true);
   };
 
   return (
@@ -29,7 +30,7 @@ const Form = ({ options }) => {
           </Radio>
         ))}
       </Radio.Group>
-      <Button mt={5} onPress={handleSubmit}>Submit</Button>
+      <Button mt={5} onPress={handleSubmit} isLoading={loading}>Submit</Button>
     </Box>
   );
 };
