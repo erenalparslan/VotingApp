@@ -6,12 +6,15 @@ import Loading from "@/app/components/Loading";
 import { Box, Divider, Heading } from "native-base";
 import Form from "./Form";
 import Result from "../Results/Result";
+import { auth } from "../../auth"
 
 export default function DetailsScreen({ route }) {
   const { id } = route.params;
   const [isVoted, setIsVoted] = useState(false);
   const { loading, error, data } = useQuery(GET_QUESTION_DETAIL, {
-    variables: { id },
+    variables: { 
+      id
+    },
     fetchPolicy: "network-only",
   });
 
