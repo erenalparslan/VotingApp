@@ -7,9 +7,9 @@ import React, { useState } from "react";
 import { auth } from "../../auth";
 
 
-const Form = ({ options ,setIsVoted}) => {
+const Form = ({ options ,setIsVoted,question_id}) => {
   const [selectedOption, setSelectedOption] = useState("");
-  const [newAnswer, { loading, data }] = useMutation(NEW_ANSWER_MUTATION);
+  const [newAnswer, { loading,error}] = useMutation(NEW_ANSWER_MUTATION);
   const handleSubmit = async () => {
     if (!selectedOption) {
       return;
@@ -17,8 +17,9 @@ const Form = ({ options ,setIsVoted}) => {
     await newAnswer({
       variables: {
         option_id: selectedOption,
-        user_id : auth.currentUser?.uid,
-      },
+        user_id: auth.currentUser?.uid,
+        question_id :question_id,
+      }
     });
     setIsVoted(true);
   };

@@ -6,14 +6,15 @@ import Loading from "@/app/components/Loading";
 import { Box, Divider, Heading } from "native-base";
 import Form from "./Form";
 import Result from "../Results/Result";
-import { auth } from "../../auth"
+import { auth } from "../../auth";
 
 export default function DetailsScreen({ route }) {
   const { id } = route.params;
   const [isVoted, setIsVoted] = useState(false);
   const { loading, error, data } = useQuery(GET_QUESTION_DETAIL, {
-    variables: { 
-      id
+    variables: {
+      id,
+      user_id: auth.currentUser?.uid
     },
     fetchPolicy: "network-only",
   });
@@ -27,13 +28,13 @@ export default function DetailsScreen({ route }) {
   }
 
   console.log("DetailsScreen, item", data);
-  const { text, options } = data.questions_by_pk;
+  const { text, options, answers } = data.questions_by_pk;
   return (
     <Box p="3">
       <Heading>{text}</Heading>
       <Divider my={2} />
-      {!isVoted ? (
-        <Form options={options} setIsVoted={setIsVoted} />
+      {!isVoted && answers.length < 1 ? (
+        <Form options={options} setIsVoted={setIsVoted} question_id={id} />
       ) : (
         <Result id={id} />
       )}
