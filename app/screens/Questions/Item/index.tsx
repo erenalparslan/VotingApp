@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import DeleteButton from './DeleteButton';
 import { Box } from 'native-base';
 import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
+import { auth } from "../../../auth";
 
 
 type RootStackParamList = {
@@ -26,6 +27,10 @@ const Item = ({ item }) => {
             >
                 <Text style={styles.text}>{item.text}</Text>
             </TouchableOpacity>
+
+            {auth.currentUser.uid === item.user_id && (
+                <DeleteButton id={item.id} />
+            )}
         </Box>
 
     )

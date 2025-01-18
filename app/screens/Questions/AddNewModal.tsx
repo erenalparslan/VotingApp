@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useMutation } from "@apollo/client";
 import { APP_NEW_QUESTION_MUTATION } from "../../graphql/queries";
+import { auth } from "../../auth";
+
 
 
 const AddNewModal = ({ closeModal }) => {
@@ -35,6 +37,7 @@ const AddNewModal = ({ closeModal }) => {
             variables: {
                 title: question,
                 options: options_data,
+                user_id: auth.currentUser?.uid,
             }
         })
         closeModal()
