@@ -1,6 +1,17 @@
-# Welcome to your Expo app 👋
+# Vote App - Built with React Native, Firebase, and GraphQL (Hasura)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is a survey application built using React Native, Firebase, and GraphQL with Hasura. Users can log in via Firebase, create new surveys, and participate in surveys created by other users. Real-time database updates, a GraphQL-powered API, and user interactions provide a dynamic survey experience.
+
+## Features
+
+- **Firebase Authentication:** Users can securely log in with Firebase.
+- **Survey Creation:** Users can create their own surveys and add questions.
+- **Participate in Surveys:** Users can participate in surveys created by others and view results.
+- **Real-time Database:** Survey results are updated in real time using Firebase Firestore or Realtime Database.
+- **GraphQL API:** The backend is powered by Hasura, which automatically generates a powerful GraphQL API for managing survey data.
+- **User Profiles:** Profile features are available for logged-in users.
+- **Survey Types:** Supports multiple question types such as multiple choice, short answer, and rating.
+
 
 ## Get started
 
@@ -25,26 +36,11 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
 
-When you're ready, run:
+<img src="https://github.com/user-attachments/assets/1d09f790-996f-472e-bb78-b3c2e2db6a0e" width="300"  />
+<img src="https://github.com/user-attachments/assets/1221ec78-08fd-4ae8-a99b-6227fc080524" width="300"  />
+<img src="https://github.com/user-attachments/assets/dbe34577-caf5-4767-8b33-3e15cd611856" width="300"  />
+<img src="https://github.com/user-attachments/assets/3d00620c-ca83-475c-95a3-23efb70d3ec4" width="300"  />
+<img src="https://github.com/user-attachments/assets/74f1827a-06de-4195-9968-d0874bf86094" width="300"  />
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+<br/>
